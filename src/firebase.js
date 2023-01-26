@@ -25,9 +25,6 @@ export const auth = getAuth();
 const db = getFirestore(app);
 const storage = getStorage();
 
-// Auth functions
-export { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut }
-
 export async function getRootFolder(userId) {
   try {
     const docRef = doc(db, 'items', userId)

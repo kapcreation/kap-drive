@@ -4,7 +4,7 @@ import Navbar from './components/Navbar'
 import { Container } from '@mui/material'
 import Dashboard from './pages/Dashboard'
 import Footer from './components/Footer'
-import { createBrowserRouter, RouterProvider, Route, Outlet, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import { useAuth } from './contexts/authContext'
@@ -30,38 +30,28 @@ function App() {
     return children
   }
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: <Navigate to='/my-drive' />
-    },
-    {
-      path: '/',
-      element: <ProtectedRoute><Layout /></ProtectedRoute>,
-      children: [
-        {
-          path: 'my-drive',
-          element: <Dashboard />
-        },
-        {
-          path: 'folders/:folderId',
-          element: <Dashboard />
-        },
-      ]
-    },
-    {
-      path: '/login',
-      element: <Login />
-    },
-    {
-      path: '/signup',
-      element: <Signup />
-    },
-  ])
-
   return (
     <div className="app">
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route 
+              index 
+              element={<Navigate to='/my-drive' />} 
+            />
+            <Route 
+              path='my-drive'
+              element={<ProtectedRoute><Dashboard /></ProtectedRoute>} 
+            />
+            <Route 
+              path='folders/:folderId'
+              element={<ProtectedRoute><Dashboard /></ProtectedRoute>} 
+            />
+          </Route>
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

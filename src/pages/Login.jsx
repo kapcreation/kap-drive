@@ -1,5 +1,5 @@
-import React from 'react'
-import { Avatar, Button, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container, Paper } from '@mui/material';
+import React, { useState } from 'react'
+import { Avatar, Button, TextField, Link, Grid, Box, Typography, Container, Paper, Alert } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { MAIN_WEBSITE_URL, DEV_NAME } from '../types'
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
@@ -7,15 +7,21 @@ import { useAuth } from '../contexts/authContext';
 
 const Login = () => {
   const { login } = useAuth()
+  const [error, setError] = useState(null)
 
   const navigate = useNavigate() 
 
-  const handleSubmit = async (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    try {
+      const data = new FormData(event.currentTarget);
     
-    await login(data.get('email'), data.get('password'))
-    navigate('/')
+      await login(data.get('email'), data.get('password'))
+      navigate('/')
+    } catch (error) {
+      console.error(error)
+      setError(error.message)
+    }
   };
 
   return (
@@ -75,6 +81,8 @@ const Login = () => {
               </Link>
             </Grid>
           </Grid>
+
+          {error && <Alert severity="error" sx={{ mt: 1 }}>{error}</Alert>}
         </Box>
       </Paper>
       
