@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef, useState } from 'react'
-import { useAuth } from '../contexts/authContext'
+import { useAuth } from '../contexts/AuthContext'
 import { getFolder, getFolderChildren, addFolder, addFile, getRootFolder } from '../firebase'
 
 export const FolderContext = createContext()

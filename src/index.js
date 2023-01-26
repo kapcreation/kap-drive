@@ -6,10 +6,10 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { AuthProvider } from './contexts/authContext';
+import { AuthProvider } from './contexts/AuthContext';
 import { CssBaseline } from '@mui/material';
-import { ColorModeProvider } from './contexts/colorModeContext';
-import { FolderProvider } from './contexts/folderContext';
+import { ColorModeProvider } from './contexts/ColorModeContext';
+import { FolderProvider } from './contexts/FolderContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

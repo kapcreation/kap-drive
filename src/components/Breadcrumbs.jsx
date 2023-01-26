@@ -2,7 +2,7 @@ import React from 'react'
 import { Breadcrumbs as MuiBreadcrumbs, Link, Typography } from '@mui/material'
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { Link as RouterLink } from 'react-router-dom';
-import { useFolder } from '../contexts/folderContext';
+import { useFolder } from '../contexts/FolderContext';
 
 const Breadcrumbs = () => {
   const { currentFolder } = useFolder()

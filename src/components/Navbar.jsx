@@ -1,14 +1,15 @@
 import React from 'react'
-import { AppBar, Box, Toolbar, Button, Container, IconButton, useTheme, Stack, Divider } from '@mui/material';
+import { AppBar, Box, Toolbar, Button, Container, IconButton, useTheme, Stack, Divider, Avatar } from '@mui/material';
 import logo from '../assets/logo.png'
-import { useAuth } from '../contexts/authContext';
-import { useColorMode } from '../contexts/colorModeContext';
+import { useAuth } from '../contexts/AuthContext';
+import { useColorMode } from '../contexts/ColorModeContext';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import { Link as RouterLink } from 'react-router-dom';
+import { deepPurple } from '@mui/material/colors';
 
 const Navbar = () => {
-  const { logout } = useAuth()
+  const { logout, currentUser } = useAuth()
   const { toggleColorMode } = useColorMode()
   const theme = useTheme();
 
@@ -26,7 +27,10 @@ const Navbar = () => {
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </Button>
               <Divider orientation="vertical" variant='middle' flexItem />
-              <Button variant='text' color='inherit' onClick={logout}>Log out</Button>
+              <Button variant='text' color='inherit' onClick={logout} sx={{ gap: '5px' }}>
+                Log out
+                <Avatar sx={{ bgcolor: deepPurple[500] }}>{currentUser?.email[0]}</Avatar>
+              </Button>
             </Stack>
           </Toolbar>
         </Container>

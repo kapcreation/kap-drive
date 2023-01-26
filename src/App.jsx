@@ -7,7 +7,8 @@ import Footer from './components/Footer'
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import { useAuth } from './contexts/authContext'
+import { useAuth } from './contexts/AuthContext'
+import ForgotPassword from './pages/ForgotPassoword'
 
 function App() {
   const { currentUser } = useAuth()
@@ -50,6 +51,7 @@ function App() {
           </Route>
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
         </Routes>
       </BrowserRouter>
     </div>

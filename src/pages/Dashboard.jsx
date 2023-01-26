@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Grid, Paper, Divider } from '@mui/material'
 import Folder from '../components/Folder'
 import File from '../components/File'
-import { useFolder } from '../contexts/folderContext'
+import { useFolder } from '../contexts/FolderContext'
 import ActionBar from '../components/ActionBar'
 import { useParams } from 'react-router-dom'
-import { useAuth } from '../contexts/authContext'
+import { useAuth } from '../contexts/AuthContext'
 
 const Dashboard = () => {
   const { currentUser } = useAuth()

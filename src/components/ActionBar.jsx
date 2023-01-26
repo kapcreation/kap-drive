@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Paper, IconButton, Box, TextField, Stack, Divider, LinearProgress } from '@mui/material'
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import UploadFileIcon from '@mui/icons-material/UploadFile';
-import { useFolder } from '../contexts/folderContext';
+import { useFolder } from '../contexts/FolderContext';
 import Breadcrumbs from './Breadcrumbs';
 
 const ActionBar = () => {
